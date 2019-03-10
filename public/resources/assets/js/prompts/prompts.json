@@ -1,0 +1,166 @@
+{
+  "prompts": [
+    {
+      "id": "flowers",
+      "title": "Flowers",
+      "type": "nonint",
+      "prompt": "Pen Flowers",
+      "body": "Make a bouquet of flowers with pens. Hand them to somebody."
+    },
+    {
+      "id": "lemons",
+      "title": "Life Gives Lemons",
+      "type": "nonint",
+      "prompt": "Draw some lemons",
+      "body": "Draw them on a piece of paper. Give that drawing to somebody. Tell them, \"Life gave you lemons\" "
+    },
+    {
+      "id": "animal",
+      "title": "animals",
+      "type": "nonint",
+      "prompt": "Animals",
+      "body": "Sound like a farm animal."
+    },
+    {
+      "id": "number",
+      "title": "Thoughtful Numbers",
+      "type": "nonint",
+      "prompt": "Think of a number",
+      "body": "Say it out loud."
+    },
+    {
+      "id": "Cliche",
+      "title": "Common Cliche",
+      "type": "nonint",
+      "prompt": "Favorite Cliche",
+      "body": "Say out loud a common cliche."
+    },
+    {
+      "id": "shake",
+      "title": "Shake Hands",
+      "type": "nonint",
+      "prompt": "Shake",
+      "body": "Shake hands with one of the presenters."
+    },
+    {
+      "id": "light",
+      "title": "light",
+      "type": "nonint",
+      "prompt": "",
+      "body": "Turn off a light. Turn it back on."
+    },
+    {
+      "id": "modern",
+      "title": "modern art",
+      "type": "int",
+      "prompt": "",
+      "body": "What do you think of modern art?"
+    },
+    {
+      "id": "box",
+      "title": "Box",
+      "type": "int",
+      "prompt": "",
+      "body": "You open a box. What's in it?"
+    },
+    {
+      "id": "drum",
+      "title": "drum",
+      "type": "nonint",
+      "prompt": "",
+      "body": "Drum roll some pens."
+    },
+    {
+      "id": "emotion",
+      "title": "emotion",
+      "type": "int",
+      "prompt": "[image here]",
+      "body": "What emotion does this image give you?"
+    },
+    {
+      "id": "stage",
+      "title": "stage",
+      "type": "nonint",
+      "prompt": "",
+      "body": "Announce a time to your peers around you."
+    },
+    {
+      "id": "door",
+      "title": "door",
+      "type": "nonint",
+      "prompt": "Knock Knock",
+      "body": "Knock on a door."
+    },
+    {
+      "id": "barter",
+      "title": "barter",
+      "type": "nonint",
+      "prompt": "",
+      "body": "Trade with somebody near you for their markers."
+    },
+    {
+      "id": "giraffe",
+      "title": "giraffe",
+      "type": "int",
+      "prompt": "Too tall?",
+      "body": "Are Giraffes TOO tall?"
+    },
+    {
+      "id": "portrait",
+      "title": "portrait",
+      "type": "nonint",
+      "prompt": "",
+      "body": "Get someone to draw your portrait."
+    },
+    {
+      "id": "penguin",
+      "title": "penguinName",
+      "type": "int",
+      "prompt": "Name?",
+      "body": "This penguins name is PUT IMAGE HERE"
+    },
+    {
+      "id": "color",
+      "title": "ickyColor",
+      "type": "nonint",
+      "prompt": "",
+      "body": "Say out loud your least favorite color."
+    },
+    {
+      "id": "painting",
+      "title": "painting",
+      "type": "int",
+      "prompt": "",
+      "body": "There's a painting on the wall. What is it?"
+    },
+    {
+      "id": "spin",
+      "title": "spin",
+      "type": "nonint",
+      "prompt": "",
+      "body": "Spin in a circle 5 times."
+    },
+    {
+      "id": "greet",
+      "title": "greet",
+      "type": "nonint",
+      "prompt": "",
+      "body": "Greet somebody as if they are the Queen."
+    },
+    {
+      "id": "autograph",
+      "title": "autograph",
+      "type": "nonint",
+      "prompt": "",
+      "body": "You're a celebrity. Give somebody your autograph."
+    },
+    {
+      "id": "sun",
+      "title": "Sun",
+      "type": "nonint",
+      "prompt": "",
+      "body": "You are the sun. Announce it."
+    },
+
+  ]
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Adelie Penguin</title>
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body>
+ <!-- This is the interactive Prompt. You enter the answer here. -->
+
+<!-- as new inputs are added, ids are changed to reflect the prompt number --><div class="mainBody">
+
+<div class="mainContainer">
+
+
+  <div class="mainContent">
+    <div class="imageIP">
+      <img src="/image/adelie.jpg" alt="adelie">
+    </div>
+
+<h1 class="prompt">Give this penguin a name.</h1>
+
+  <div class="promptEntry">
+
+  <div class="promptInput">
+
+    <input type="text" name="promptAnswer" value="" id="penInput" class="formBorder" placeholder="Enter answer here">
+    <span class="focus-border">
+      <i></i>
+    </span>
+  </div>
+
+  <div class="promptSubmit">
+
+    <button type="button" name="penInputSubmit" id="penInputSubmit">Submit</button>
+  </div>
+
+  </div>
+</div>
+
+
+
+      <a href="/prompts.html"class="btn newPromptButton">next prompt</a>
+    </div>
+  </div>
+</div>
+
+    <script src="/socket.io/socket.io.js" charset="utf-8"></script>
+
+    <script src="/js/main.js" charset="utf-8"></script>
+
+  </body>
+</html>
