@@ -2,7 +2,6 @@
   <v-layout row wrap>
     <v-flex xs12>
       <v-btn
-        v-show="loggedIn"
         absolute
         dark
         fab
