@@ -14,17 +14,36 @@
               <v-container>
                 <v-layout wrap>
                   <v-flex xs10>
-                    <v-text-field label="Question" :value="item.question"></v-text-field>
+                    <v-text-field
+                      label="Question"
+                      :value="item.question"
+                      @input="updateQuestionTitle($event, questionIndex)"
+                    ></v-text-field>
                   </v-flex>
                   <v-flex xs2>
-                    <v-text-field type="number" label="Points" :value="item.points"></v-text-field>
+                    <v-text-field
+                      type="number"
+                      label="Points"
+                      :value="item.points"
+                      @input="updateQuestionPoints($event, questionIndex)"
+                    ></v-text-field>
                   </v-flex>
                 </v-layout>
 
                 <v-container>
                   <v-layout wrap v-for="(answer, answerIndex) in item.answers" :key="answerIndex">
                     <v-flex xs10>
-                      <v-text-field label="Answer" :value="answer.answer"></v-text-field>
+                      <v-checkbox
+                        label="Right Answer"
+                        :input-value="answer.isRight"
+                        hide-details
+                        @change="updateAnswerState($event, questionIndex, answerIndex)"
+                      ></v-checkbox>
+                      <v-text-field
+                        label="Answer"
+                        :value="answer.answer"
+                        @input="updateAnswerText($event, questionIndex, answerIndex)"
+                      ></v-text-field>
                     </v-flex>
                     <v-flex xs2>
                       <v-btn
@@ -46,7 +65,12 @@
                     color="primary"
                     @click="addAnswer(questionIndex)"
                   >Add Answer</v-btn>
-                  <v-btn class="mt-4" color="red" dark>Remove Question</v-btn>
+                  <v-btn
+                    class="mt-4"
+                    color="red"
+                    dark
+                    @click="removeQuestion(questionIndex)"
+                  >Remove Question</v-btn>
                 </v-layout>
               </v-container>
             </v-card>
@@ -63,6 +87,8 @@ import { mapMutations, mapGetters } from "vuex";
 import {
   ADD_ANSWER,
   REMOVE_ANSWER,
+  UPDATE_ANSWER,
+  UPDATE_QUESTION,
   REMOVE_QUESTION
 } from "@/store/prompt/mutations";
 
@@ -77,8 +103,45 @@ export default {
     ...mapMutations("prompt", {
       addAnswer: ADD_ANSWER,
       removeAnswer: REMOVE_ANSWER,
+      updateAnswer: UPDATE_ANSWER,
+      updateQuestion: UPDATE_QUESTION,
       removeQuestion: REMOVE_QUESTION
-    })
+    }),
+    updateAnswerText(value, questionIndex, answerIndex) {
+      this.updateAnswer({
+        answer: value,
+        isRight: this.prompt.questions[questionIndex].answers[answerIndex]
+          .isRight,
+        questionIndex,
+        answerIndex
+      });
+    },
+    updateAnswerState(value, questionIndex, answerIndex) {
+      this.updateAnswer({
+        isRight: value,
+        answer: this.prompt.questions[questionIndex].answers[answerIndex]
+          .answer,
+        questionIndex,
+        answerIndex
+      });
+    },
+    updateQuestionTitle(value, questionIndex) {
+      this.updateQuestion({
+        question: value,
+        points: this.quiz.questions[questionIndex].points,
+        questionIndex
+      });
+    },
+    updateQuestionPoints(value, questionIndex) {
+      // test if the input does not contain a valid number or the number is negative
+      const points = parseInt(value);
+      if (isNaN(points) || points < 0) return; // cancel triggering the mutation
+      this.updateQuestion({
+        question: this.quiz.questions[questionIndex].question,
+        points,
+        questionIndex
+      });
+    }
   }
 };
 </script>
