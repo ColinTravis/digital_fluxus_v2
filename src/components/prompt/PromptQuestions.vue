@@ -15,19 +15,19 @@
                 <v-layout wrap>
                   <v-flex xs10>
                     <v-text-field
-                      label="Question"
+                      label="Prompt"
                       :value="item.question"
                       @input="updateQuestionTitle($event, questionIndex)"
                     ></v-text-field>
                   </v-flex>
-                  <v-flex xs2>
+                  <!-- <v-flex xs2>
                     <v-text-field
                       type="number"
                       label="Points"
                       :value="item.points"
                       @input="updateQuestionPoints($event, questionIndex)"
                     ></v-text-field>
-                  </v-flex>
+                  </v-flex> -->
                 </v-layout>
 
                 <v-container>
@@ -70,7 +70,7 @@
                     color="red"
                     dark
                     @click="removeQuestion(questionIndex)"
-                  >Remove Question</v-btn>
+                  >Remove Prompt</v-btn>
                 </v-layout>
               </v-container>
             </v-card>
@@ -128,20 +128,20 @@ export default {
     updateQuestionTitle(value, questionIndex) {
       this.updateQuestion({
         question: value,
-        points: this.quiz.questions[questionIndex].points,
+        // points: this.prompt.questions[questionIndex].points,
         questionIndex
       });
     },
-    updateQuestionPoints(value, questionIndex) {
-      // test if the input does not contain a valid number or the number is negative
-      const points = parseInt(value);
-      if (isNaN(points) || points < 0) return; // cancel triggering the mutation
-      this.updateQuestion({
-        question: this.quiz.questions[questionIndex].question,
-        points,
-        questionIndex
-      });
-    }
+    // updateQuestionPoints(value, questionIndex) {
+    //   // test if the input does not contain a valid number or the number is negative
+    //   const points = parseInt(value);
+    //   if (isNaN(points) || points < 0) return; // cancel triggering the mutation
+    //   this.updateQuestion({
+    //     question: this.prompt.questions[questionIndex].question,
+    //     points,
+    //     questionIndex
+    //   });
+    // }
   }
 };
 </script>

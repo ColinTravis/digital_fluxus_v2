@@ -9,3 +9,8 @@ export const REMOVE_ANSWER = "REMOVE_ANSWER";
 export const UPDATE_ANSWER = "UPDATE_ANSWER";
 
 export const RESET_PROMPT = "RESET_NEW_PROMPT";
+
+
+export const PUSH_PROMPT = "PUSH_PROMPT";
+
+export const RESET_PROMPT_LIST = "RESET_PROMPT_LIST";

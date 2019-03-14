@@ -6,10 +6,10 @@
         class="mt-4"
         color="primary"
         @click="addQuestion"
-      > Add Question </v-btn>
+      > Add Prompt </v-btn>
     </v-layout>
     <v-card-actions>
-      <b>Total Points: {{totalPoints}}</b>
+      <!-- <b>Total Points: {{totalPoints}}</b> -->
       <v-spacer></v-spacer>
       <v-btn flat to="/">Cancel</v-btn>
       <v-btn flat color="warning" @click="reset">Reset</v-btn>
@@ -29,11 +29,11 @@
     props: ['action', 'actionName'],
     computed: {
       ...mapGetters('prompt', {prompt: 'newPrompt'}),
-      totalPoints() {
-        return this.prompt.questions.reduce((curr, question) =>
-          parseInt(question.points) + curr, 0);
-        // we used parseInt because the value coming from the input is a string.
-      }
+    //   totalPoints() {
+    //     return this.prompt.questions.reduce((curr, question) =>
+    //       parseInt(question.points) + curr, 0);
+    //     // we used parseInt because the value coming from the input is a string.
+    //   }
     },
     methods: {
       ...mapMutations('prompt', {

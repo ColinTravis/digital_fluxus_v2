@@ -3,14 +3,14 @@
     <v-card-title primary-title>
       <div>
         <div class="headline">
-          <v-icon>question_answer</v-icon>New Prompt
+          <v-icon>question_answer</v-icon>New Collection of Prompts
         </div>
       </div>
     </v-card-title>
     <v-subheader>Prompt Information</v-subheader>
     <prompt-information/>
 
-    <v-subheader>Prompt Questions</v-subheader>
+    <v-subheader>Prompts</v-subheader>
     <prompt-questions/>
 
     <prompt-actions 
@@ -45,6 +45,7 @@ export default {
         await this.create();
         this.$router.push("/");
       } catch (error) {
+        console.log(error);
         alert("Something went wrong");
       }
     }

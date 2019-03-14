@@ -1,3 +1,6 @@
+import db from "@/db";
+import firebase from "@/firebase";
+
 import {
   UPDATE_INFORMATION,
   ADD_QUESTION,
@@ -6,7 +9,7 @@ import {
   ADD_ANSWER,
   REMOVE_ANSWER,
   UPDATE_ANSWER,
-  RESET_PROMPT,
+  RESET_PROMPT
 } from "./mutations";
 
 const state = {
@@ -15,8 +18,8 @@ const state = {
     description: 100,
     questions: [
       {
-        question: "First Question",
-        points: "First Points",
+        question: "First Prompt",
+        // points: "First Points",
         answers: [
           {
             answer: "First answer"
@@ -46,7 +49,7 @@ const mutations = {
   [ADD_QUESTION](state) {
     state.newPrompt.questions.push({
       question: "Question",
-      points: 0,
+      // points: 0,
       answers: []
     });
   },
@@ -54,13 +57,11 @@ const mutations = {
     const question = state.newPrompt.questions[payload.questionIndex];
 
     question.question = payload.question;
-    question.points = payload.points;
+    // question.points = payload.points;
   },
   [REMOVE_QUESTION](state, questionIndex) {
     if (state.newPrompt.questions.length > 1) {
-      state.newPrompt
-        .questions
-        .splice(questionIndex, 1);
+      state.newPrompt.questions.splice(questionIndex, 1);
     }
   },
   [ADD_ANSWER](state, questionIndex) {
@@ -96,7 +97,67 @@ const mutations = {
   }
 };
 
-const actions = {};
+const actions = {
+  async create({ state }) {
+    const user = firebase.auth().currentUser;
+    if (user) {
+      // check if there is a question without a right answer
+      state.newPrompt.questions.map(question => {
+        let hasRightAnswer = false;
+
+        question.answers.map(answer => {
+          if (answer.isRight) hasRightAnswer = true;
+        });
+
+        // if (!hasRightAnswer) {
+        //   alert(
+        //     `Question: '${question.question}' doesn't have a right answer!`
+        //   );
+        //   throw new Error();
+        // }
+      });
+
+
+      // save to database
+      await db.collection('prompts').add({
+        ...state.newPrompt,
+        userId: user.uid
+      });
+
+      alert('Prompt created');
+
+    } else {
+      alert('Unauthorized');
+    }
+    //db.collection('prompts')
+  },
+
+  list({ commit }) {
+    commit(RESET_PROMPT_LIST);
+
+    db.collection('prompts').onSnapshot(snapshot => {
+      snapshot.docChanges.forEach(function (change) {
+        if (change.type === "added") {
+          commit(PUSH_PROMPT, {
+            id: change.doc.id,
+            ...change.doc.data()
+          });
+        }
+      });
+    });
+  },
+
+  async get({ commit }, id) {
+    const prompt = await db.collection('prompts').doc(id).get();
+
+    if (prompt.exists) {
+      commit(SET_PROMPT, {
+        id: prompt  .id,
+        ...prompt.data()
+      });
+    }
+  }
+};
 
 export default {
   namespaced: true,

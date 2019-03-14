@@ -4,14 +4,14 @@
     <v-layout wrap>
       <v-flex xs12>
         <v-text-field
-          label="Title"
+          label="Collection Title"
           :value="prompt.title"
           @input="updateTitle"
         ></v-text-field>
       </v-flex>
       <v-flex xs12>
         <v-text-field
-          label="Description"
+          label="Collection Description"
           multi-line
           :value="prompt.description"
           @input="updateDescription"
